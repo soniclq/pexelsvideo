@@ -15,6 +15,7 @@ import logging
 import os
 from pypexels import PyPexels
 import json
+import videodown
 # api_key = os.environ.get('API_KEY', None) or 'DUMMY_API_KEY'
 api_key = "563492ad6f91700001000001ba2c5c9bac0044a7bf3826f1939654fd"
 
@@ -45,13 +46,18 @@ v_list = video.video_files
 json_str = json.dumps(v_list[0])
 json_obj = json.loads(json_str)
 print(json_obj['file_type'])
-
+count = 0
 for v in v_list:
     json_str = json.dumps(v)
     json_obj = json.loads(json_str)
     width = json_obj['width']
     height = json_obj['height']
-    if(height == 1080 and width == 1920):
-        print(repr(width) + repr(height))
+    link = json_obj['link']
+    print(link)
+    count += 1
+    videodown.download_file(link, "//Users/momo/PycharmProjects/pypexels/"+repr(count)+".mp4")
+    # if(height == 1080 and width == 1920):
+    #     print(repr(width) + repr(height))
+    #     print(link)
     # print(json_obj['height'])
 # print(video.g)
