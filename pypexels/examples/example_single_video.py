@@ -55,7 +55,7 @@ for v in v_list:
     link = json_obj['link']
     print(link)
     count += 1
-    videodown.download_file(link, "//Users/momo/PycharmProjects/pypexels/"+repr(count)+".mp4")
+    videodown.download_file(link, "/home/sonic/workplace/testvideo/"+repr(count)+".mp4")
     # if(height == 1080 and width == 1920):
     #     print(repr(width) + repr(height))
     #     print(link)

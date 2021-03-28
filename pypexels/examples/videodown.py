@@ -6,11 +6,16 @@ import time
 # import hashlib
 # import threading
 import os
+from fake_useragent import UserAgent
+# import fake_useragent
 
 
 def download_file(url, path):
     # with closing(requests.get(url, stream=True)) as r:
-    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'}
+    ua = UserAgent()
+    headers = {'user-agent':ua.random}
+    print(headers)
+    # headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'}
     r = requests.get(url, stream=True, headers = headers)
     chunk_size = 1024 * 10
     content_size = int(r.headers['content-length'])
