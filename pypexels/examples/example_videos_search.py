@@ -83,7 +83,8 @@ def search_and_download(words):
                     try:
                         videodown.download_file(link, down_path+"/"+getTimeStr()+".mp4")
                         print(link)
-                    except:
+                    except Exception as e:
+                        print("!!!!!!!!!!!!!" + e)
                         pass
             time.sleep(15)
         if not search_videos_page.has_next:
@@ -96,11 +97,13 @@ def search_and_download(words):
 # search_and_download("river")
 # search_and_download("sea")
 # search_and_download("mountain")
-search_and_download("sea wave")
-search_and_download("road")
-search_and_download("forest")
-search_and_download("rain")
-search_and_download("winter")
-search_and_download("summer")
-search_and_download("spring")
-search_and_download("autumn")
+# search_and_download("sea wave")
+# search_and_download("road")
+# search_and_download("forest")
+# search_and_download("rain")
+# search_and_download("winter")
+# search_and_download("summer")
+# search_and_download("spring")
+# search_and_download("autumn")
+search_and_download("bridge")
+search_and_download("garden")
