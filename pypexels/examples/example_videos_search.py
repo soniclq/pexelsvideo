@@ -68,31 +68,36 @@ def search_and_download(words):
             print("!!!!!!!!!!!!" + e)
             pass
 
-    while True:
-        for video in search_videos_page.entries:
-            # print(video.id, video.user.get('name'), video.url)
-            v_list = video.video_files
-            for v in v_list:
-                json_str = json.dumps(v)
-                json_obj = json.loads(json_str)
-                width = json_obj['width']
-                height = json_obj['height']
-                link = json_obj['link']
-                if(height == 1080 and width == 1920):
-                    print(repr(width) + repr(height))
-                    try:
-                        videodown.download_file(link, down_path+"/"+getTimeStr()+".mp4")
-                        print(link)
-                    except Exception as e:
-                        print("!!!!!!!!!!!!!" + e)
-                        pass
-            time.sleep(15)
-        if not search_videos_page.has_next:
-            break
-        count = count +1
-        if count >= 100:
+    # while True:
+    for video in search_videos_page.entries:
+        # print(video.id, video.user.get('name'), video.url)
+        v_list = video.video_files
+        for v in v_list:
+            json_str = json.dumps(v)
+            json_obj = json.loads(json_str)
+            width = json_obj['width']
+            height = json_obj['height']
+            link = json_obj['link']
+            if (height == 1080 and width == 1920):
+                print(repr(width) + repr(height))
+                try:
+                    videodown.download_file(link, down_path + "/" + getTimeStr() + ".mp4")
+                    print(link)
+                except Exception as e:
+                    print("!!!!!!!!!!!!!" + e)
+                    pass
+        time.sleep(15)
+        count = count + 1
+        if count > 20:
             break;
-        search_videos_page = search_videos_page.get_next_page()
+        # if not search_videos_page.has_next:
+        #     break
+        # count = count +1
+        # if count >= 20:
+        #     break;
+        # search_videos_page = search_videos_page.get_next_page()
+
+# download_list = ["river"]
 
 # search_and_download("river")
 # search_and_download("sea")
@@ -105,5 +110,12 @@ def search_and_download(words):
 # search_and_download("summer")
 # search_and_download("spring")
 # search_and_download("autumn")
-search_and_download("bridge")
-search_and_download("garden")
+# search_and_download("bridge")
+# search_and_download("garden")
+# search_and_download("universe")
+# search_and_download("stars")
+# search_and_download("sunset")
+# search_and_download("clouds")
+# search_and_download("nature wallpaper")
+search_and_download("sky")
+search_and_download("Night Sky")
